@@ -1,0 +1,28 @@
+-Scaffolding(비계(일종의윤곽)) : 웹페이지의 레이아웃을 만들고 반응형 디자인을 웹에 적용
+	Grid System : 총 화면을 12개로 등분한 칸으로 이루어져있음 
+
+-Base CSS : 부트스트랩의 기본적인 디자인을 다른디자인으로 변경한것!
+	(엘리먼트에다가 특정한 클래스를 부가하면 클래스에 해당하는 디자인이 추가됨)
+	Typography : head나 italic 코드등 강조할때 적용할 수 있는것들
+	Code	:  html코드나 코드를 쓸때 코드가 화면상에서 해석될때
+	Tables	: 테이블 이나 UI설명
+	Forms	: 사용자에게 입력받을때 인터페이스들을 새로해놈
+	Buttons	: 디자인된 버튼을 제공하고 있음 
+	Images 	: 이미지 테두리를 설정 할 수 있음.
+	Icons by Glyphicons: 디자인된 아이콘들을 제공 
+
+-Componenet : 화면상에서 등장하는 요소들(링크,버튼,텍스트필드 등..)을 제공 
+	dropdowns	: 아래로 리스트된  메뉴를 제공 (sub menu도 제공)
+	button groups	: 일렬로 리스트된 메뉴를 제공 
+	Button dropdowns	: 버튼에 마우스를 두면 드랍다운 메뉴가 나옴(split하면 본 메뉴랑 드랍다운 나눠짐)
+	*Navs(navigation)	: 웹페이지의 탭처럼 하나하나 나눌 수 있음
+	*Navbar		: nav랑 비슷한데 일렬로 되있음.(위쪽에 붙이거나 아래쪽에 붙일 수도 있음, 반응형으로도 가능)
+	Breadcrumbs	: 현재 어느 위치에 있는지 알려줌
+	Pagination	: 페이지를 구분해서 페이지를 나눌 수 있음.
+	Labels and badges	: 메시지를 알려줄때 어떤 종류의 메시지인지 알려줄수있음(명시적으로)
+	Typography	: 컨텐츠중에 강조되야 할 것들을 나타냄.
+	Thumbnails 	: 썸네일 어떻게 나타낼지 
+	Alerts		: 사용자에게 정보를 제공할때 사용자가 확일할때 강조성있도록 나타냄.(x를 누를때까지 뜨도록)
+	Progress bars 	: 몇 퍼센트 진행 됐는지~ 바로 나타냄
+
+https://getbootstrap.com/docs/4.5/getting-started/introduction/ 여기서 검색!	
