@@ -8,8 +8,10 @@ import Regionlist from "./components/Regionlisgt";
 // import screen from "./image/screen.png";
 import playstore from "./image/playstore.png";
 import appstore from "./image/appstore.png";
+import Customer from "./components/Customer"
 import axios from 'axios';
 import "./App.css"
+
 
 class App extends Component {
   constructor(props) {
@@ -17,20 +19,32 @@ class App extends Component {
     this.state = {
       subject: { title: "브라운하우스" },
       mode: "welcome",
+      customers: '',
+      completed: 0,
       title: null
     }
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3001/api')
-      .then(res => res.json())
-      .then(data => this.setState({title: data.title}));
-      this._dbTest();
+  stateRefresh = () => {
+    this.setState({
+      customers: '',
+      completed: 0
+    });
+  this.callApi()
+      .then(res => this.setState({ customers: res }))
+      .catch(err => console.log(err));
   }
-  
-  _dbTest = async() => {
-    const res = await axios.get('/api/test');
-    console.log(res.data);
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ customers: res }))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async () => {
+    const response = await fetch('/api/customers');
+    const body = await response.json();
+    return body;
   }
 
   getMode() {
@@ -38,9 +52,9 @@ class App extends Component {
     if (this.state.mode === "welcome") {
       _logmode = null;
     } else if (this.state.mode === "login") {
-      _logmode = <Login></Login>
+      _logmode = <Login/>
     } else if (this.state.mode === "register") {
-      _logmode = <Register></Register>
+      _logmode = <Register stateRefresh={this.stateRefresh}/>
     }
     return _logmode;
   }
@@ -49,7 +63,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         {this.state.title? <h1>{this.state.title}</h1>:<h1>loading...</h1>}
+        {this.state.customers ? this.state.customers.map(c => {
+          return <Customer key={c.id} id={c.id} email={c.email} password={c.password} name={c.name} birthday={c.birthday} city={c.city} district={c.district}
+            address={c.address} />
+        }) : ''}
+
+
         <aside>
           <div className="login">
             <Logstate
@@ -71,7 +90,9 @@ class App extends Component {
                     mode: 'register'
                   })
                 }
-              }.bind(this)}></Logstate>
+              }.bind(this)}
+              />
+                
             {this.getMode()}
           </div>
           <div className="regionlist">
